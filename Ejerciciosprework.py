@@ -64,5 +64,21 @@ mi_tupla = tuple(mi_lista2)
 print(mi_tupla)
 
 
+#6. 
+def factorial_recursivo(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * factorial_recursivo(n-1)
+numero =int(input("introducir numero: "))
+print(factorial_recursivo(numero))
 
+
+
+
+
+
+
+
+#7
  
