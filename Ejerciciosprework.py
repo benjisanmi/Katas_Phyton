@@ -19,12 +19,14 @@
 
 # 2.  Dada una lista de números, obtén una nueva lista con el doble de cada valor. Usa la función map()
 #definimos la lista
-mi_lista = (1,2,3,4,5)
-#definimos la función para multiplicar *2 e imprimirla
+entrada = input("Introduce números separados por espacios: ")
+lista_numeros = entrada.split()              
+lista_numeros = [int(numero) for numero in lista_numeros]  
 def multiplicar (numero):
-    return numero*2
-lista_actualizada = map(multiplicar, mi_lista)
-print(list(lista_actualizada))
+    return numero *2
+lista_multiplicada = map(multiplicar,lista_numeros)
+print(list(lista_multiplicada))
+
 
 #3. Escribe una función que tome una lista de palabras y una palabra objetivo como parámetros. La función debe 
 #devolver una lista con todas las palabras de la lista original que contengan la palabra objetivo
@@ -64,7 +66,7 @@ mi_tupla = tuple(mi_lista2)
 print(mi_tupla)
 
 
-#6. 
+#6.Escribe una función que calcule el factorial de un número de manera recursiva
 def factorial_recursivo(n):
     if n == 0 or n == 1:
         return 1
@@ -75,13 +77,15 @@ print(factorial_recursivo(numero))
 
 
 
-#7 
+#7. Genera una función que convierta una lista de tuplas a una lista de strings. Usa la función map()
 tuple = (2,3,4,5,6)
 lista = list (map(str, tuple))
 print (lista) 
 
 
-#8. 
+#8.  Escribe un programa que pida al usuario dos números e intente dividirlos. Si el usuario ingresa un valor no numérico 
+#o intenta dividir por cero, maneja esas excepciones de manera adecuada. Asegúrate de mostrar un mensaje 
+#indicando si la división fue exitosa o no
 
 while True:
     try:
@@ -97,4 +101,50 @@ while True:
     except ValueError:
         print ("no has introducido un valor")
 
-#9. 
+#9. Escribe una función que tome una lista de nombres de mascotas como parámetro y devuelva una nueva lista 
+#excluyendo ciertas mascotas prohibidas en España. La lista de mascotas a excluir es ["Mapache", "Tigre", 
+#"Serpiente Pitón", "Cocodrilo", "Oso"].Usa la función filter()
+
+entrada = input("Introduce animales separados por comas y la primera en mayuscula: ")
+lista_animales = entrada.split(",")               
+
+animales_prohibidos = ["Mapache", "Tigre", "Serpiente Pitón", "Cocodrilo", "Oso"]
+
+animales_permitidos = list(filter (lambda animal: animal not in animales_prohibidos,lista_animales))
+print (animales_permitidos)
+
+
+#10.  Escribe una función que reciba una lista de números y calcule su promedio. Si la lista está vacía, lanza una 
+#excepción personalizada y maneja el error adecuadamente.
+
+while True:
+    try: 
+        lista_numeros = input("introduzca valores separados por espacio (solo admite numeros enteros, sin decimales) : ")
+        numeros = lista_numeros.split ()
+        numeros = [int(numero) for numero in numeros]
+        if len(numeros) == 0:
+            print ("no has introducido valores")
+        else: 
+            def promedio (numeros):
+                suma = 0
+                for numero in numeros:
+                    suma += numero
+                return suma/len(numeros)
+            print(promedio(numeros))
+    except ValueError:
+        print ("no has introducido valores enteros")
+#11.  Escribe un programa que pida al usuario que introduzca su edad. Si el usuario ingresa un valor no numérico o un 
+#valor fuera del rango esperado (por ejemplo, menor que 0 o mayor que 120, maneja las excepciones 
+#adecuadamente
+while True:
+    try: 
+        edad = int(input("introduzca su edad: "))
+        if 0<edad<120:
+            print ("su edad es: "+ str (edad))
+            break    
+        else: 
+           print ("Ha introducido una edad imposible, vuelva a intenarlo") 
+    except ValueError:
+        print ("no has introducido un valor numerico")
+
+
