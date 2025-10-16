@@ -34,10 +34,10 @@ for pais in mi_lista :
     if palabra in pais:
         print (pais)
 #4. Genera una función que calcule la diferencia entre los valores de dos listas. Usa la función map()
-
+#Valor de las listas
 mi_lista1= (1,2,3,4,5)
 mi_lista2= mi_lista1 [::-1]
-
+#realizar la resta de las listas y representar el resultado
 resultado = list(map(lambda a, b: a - b, mi_lista1,mi_lista2))
 print(resultado)
 
@@ -75,10 +75,26 @@ print(factorial_recursivo(numero))
 
 
 
+#7 
+tuple = (2,3,4,5,6)
+lista = list (map(str, tuple))
+print (lista) 
 
 
+#8. 
 
+while True:
+    try:
+        print ("Introduzca dos valores para que sean divididos entre sí.La función será dividir el numero 1 entro el numero 2")
+        numero_1 = int (input ("introduzca numero 1: "))
+        numero_2 = int (input ("introduzca numero 2: "))
+        if numero_2 != 0:
+            resultado = numero_1/numero_2
+            print (resultado)
+            break
+        else :
+            print ("no es posible dividir entre 0")
+    except ValueError:
+        print ("no has introducido un valor")
 
-
-#7
- 
+#9. 
