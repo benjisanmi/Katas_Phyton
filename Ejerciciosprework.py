@@ -1,21 +1,29 @@
 #1.Escribe una función que reciba una cadena de texto como parámetro y devuelva un diccionario con las frecuencias de cada letra en la cadena. Los espacios no deben ser considerados
-    #Creamos la función
-    def parametro(cadena_de_texto):
-        #eliminamos espacios 
-        cadena_de_texto=cadena_de_texto.replace(" ","")
-        # Creamos un diccionario vacío para almacenar las frecuencias
-        dict = {}
-        # Recorremos cada carácter en la cadena de texto
-        for letra in cadena_de_texto:
-            if letra in dict:
-                dict[letra] += 1
-            else:
-                dict[letra] = 1
-        return dict
-    #Damos valor a la cadena de texto e imprimimos el diccionario
-    cadena = "Cadena de texto como parámetro"
-    resultado = parametro(cadena)
-    print(resultado)
+
+def contar_frecuencias(cadena):
+    # Creamos un diccionario vacío donde guardaremos las letras y sus frecuencias
+    frecuencias = {}
+
+    # Recorremos cada carácter de la cadena que el usuario haya pasado
+    for caracter in cadena:
+        # Ignoramos los espacios en blanco
+        if caracter == " ":
+            continue  # 'continue' salta a la siguiente iteración
+
+        # Si la letra ya existe como clave en el diccionario
+        if caracter in frecuencias:
+            # Aumentamos su contador en 1
+            frecuencias[caracter] += 1
+        else:
+            # Si no existe, la agregamos con valor 1
+            frecuencias[caracter] = 1
+    # Devolvemos el diccionario con los conteos
+    return frecuencias
+#imprimos resultado
+texto = input("introduce una frase: ")
+resultado = contar_frecuencias(texto)
+print(resultado)
+
 
 # 2.  Dada una lista de números, obtén una nueva lista con el doble de cada valor. Usa la función map()
 #definimos la lista
@@ -30,7 +38,7 @@ print(list(lista_multiplicada))
 
 #3. Escribe una función que tome una lista de palabras y una palabra objetivo como parámetros. La función debe 
 #devolver una lista con todas las palabras de la lista original que contengan la palabra objetivo
-mi_lista = ("Paris","roma","madrid","london")
+mi_lista = ["Paris","roma","madrid","london"]
 palabra = "i"
 for pais in mi_lista :
     if palabra in pais:
@@ -202,13 +210,44 @@ print (filtrado)
 
 #17. Crea una función que tome una lista de dígitos y devuelva el número correspondiente. Por ejemplo, 5,7,2 
 #corresponde al número quinientos setenta y dos 572. Usa la función reduce()
+from functools import reduce  # Importamos reduce
+def lista_a_numero(digitos):
+    # Usamos reduce para convertir la lista en un solo número
+    return reduce(lambda acumulado, x: acumulado * 10 + x, digitos)
+
+numeros = [4,5,6,7,8,9]
+resultado = lista_a_numero(numeros)
+print(resultado)
+
+#18. Escribe un programa en Python que cree una lista de diccionarios que contenga información de estudiantes 
+#(nombre, edad, calificación) y use la función filter para extraer a los estudiantes con una calificación mayor o igual a 
+#90. Usa la función filter()
+#Definimos los alumnos
+alumno_1= {'nombre': 'Javi','edad': '25', 'calificacion': 100 }
+alumno_2= {'nombre': 'Pablo','edad': '28', 'calificacion': 95 }
+alumno_3= {'nombre': 'Iván','edad': '27', 'calificacion': 80 }
+alumno_4= {'nombre': 'Ángel','edad': '28', 'calificacion': 60 }
+#creamos una lista con los diccionarios (información de cada alumno)
+listado_alumnos = [alumno_1,alumno_2,alumno_3,alumno_4]
+
+#filtramos a los alumnos que no hayan sacado más de 90
+filtrado = filter (lambda item:item['calificacion'] >90, listado_alumnos)
+#creamos una nueva variable con la la lista de almunos filtrados y lo imprimimos
+resultado = list(filtrado)
+print (resultado)
+
+#19. Crea una función lambda que filtre los números impares de una lista dada
+#Lista 
+lista = [1,2,3,4,5,6,7,8,9]
+numeros_impares= filter (lambda numero: numero % 2 != 0,lista)
+print(list(numeros_impares))
 
 
-
-
-
-
-
+#20.  Para una lista con elementos tipo integer y string obtén una nueva lista sólo con los valores int. Usa la función filter()
+#Lista 
+lista = [1,'hola',2,3,'españa']
+numeros = filter (lambda numero: type(numero) ==int, lista)
+print(list(numeros))
 
 
 
