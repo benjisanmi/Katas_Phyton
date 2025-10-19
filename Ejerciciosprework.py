@@ -147,4 +147,74 @@ while True:
     except ValueError:
         print ("no has introducido un valor numerico")
 
+#12.Genera una función que al recibir una frase devuelva una lista con la longitud de cada palabra. Usa la función map ()
+frase = input("introduzca una frase: ")
+palabras = frase.split ()
+palabras = [str(palabra) for palabra in palabras]
+def longitud (palabra) : 
+    return len (palabra)
+lista_longitud = map (longitud,palabras)
+print (list(lista_longitud))
+
+#13. Genera una función la cual, para un conjunto de caracteres, devuelva una lista de tuplas con cada letra en 
+#mayúsculas y minúsculas. Las letras no pueden estar repetidas .Usa la función map ()
+palabra = input("introduzca una palabra: ")
+def caracteres (palabra):
+   letras_unicas = set(palabra)
+   resultado =list(map(lambda letra: (letra.upper(), letra.lower()),letras_unicas))
+   return resultado
+print(caracteres(palabra))
+    
+
+#14.Crea una función que retorne las palabras de una lista de palabras que comience con una letra en especifico. Usa la 
+# función filter ()
+print ("Introduce diversas palabras y una letra. Se eliminarán las palabras que inician por esa letra")
+entrada = input("Introduce palabras separados por espacio y la primera en mayuscula: ")
+palabras = entrada.split()
+letra = input("Introduce una letra en mayuscula: ")
+palabra_correcta = filter(lambda palabra: letra not in palabra, palabras)
+print (list (palabra_correcta))
+
+
+#15. Crea una función lambda que  sume 3 a cada número de una lista dada.
+lista_numeros = input("introduzca valores separados por espacio (solo admite numeros enteros, sin decimales) : ")
+numeros = lista_numeros.split ()
+numeros = [int(numero) for numero in numeros]
+suma = list (map (lambda numero: numero + 3, numeros))
+print (suma)
+
+#16.  Escribe una función que tome una cadena de texto y un número entero n como parámetros y devuelva una lista de 
+#todas las palabras que sean más largas que n. Usa la función filter()
+#introducir valores
+frase = input("introduzca una frase: ")
+numero = int (input( "introduzca numero: "))
+#convertirlo a lista
+palabras = frase.split ()
+palabras = [str(palabra) for palabra in palabras]
+def longitud (palabra) : 
+    return len (palabra)
+lista_longitud = map (longitud,palabras)
+#crear un diccionario con las longitudes y las palabras
+diccionario = dict(zip(palabras,lista_longitud))
+
+filtrado = dict (filter (lambda item: item[1] > numero,diccionario.items()))
+print (filtrado)
+
+#17. Crea una función que tome una lista de dígitos y devuelva el número correspondiente. Por ejemplo, 5,7,2 
+#corresponde al número quinientos setenta y dos 572. Usa la función reduce()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
