@@ -249,6 +249,62 @@ lista = [1,'hola',2,3,'españa']
 numeros = filter (lambda numero: type(numero) ==int, lista)
 print(list(numeros))
 
+#21. Crea una función que calcule el cubo de un número dado mediante una función lambda
+numero = int (input("introducir un numero:" ))
+cubo = lambda numero: numero**3
+print (cubo(numero))
+
+#22. Dada una lista numérica, obtén el producto total de los valores de dicha lista. Usa la función reduce()
+from functools import reduce  # Importamos reduce
+def product_numero(digitos):
+    # Usamos reduce para multiplicar los numeros entre sí
+    return reduce(lambda acumulado, x: acumulado *x, digitos)
+
+numeros = [2,3,2,3,4]
+resultado = product_numero(numeros)
+print(resultado)
+
+#23. Concatena una lista de palabras. Usa la función reduce()
+from functools import reduce  # Importamos reduce
+def lista_palabras(palabras):
+    # Usamos reduce para multiplicar los numeros entre sí
+    return reduce(lambda acumulado, x: acumulado+x, palabras)
+frase = ["Hola ", "que tal ", "estas"]
+resultado = lista_palabras(frase)
+print(resultado)
+
+#24. Cálcula la diferencia total en los valores de una lista. Usa la función reduce()
+from functools import reduce  # Importamos reduce
+def resta_numero(digitos):
+    # Usamos reduce para restar los numeros entre sí
+    return reduce(lambda acumulado, x: acumulado -x, digitos)
+
+numeros = [2,7,2,4,4]
+resultado = resta_numero(numeros)
+print(resultado)
+
+#25. Crea una función que cuente el número de caracteres en una cadena de texto dada. 
+frase = input("introducir una frase: ")
+print (len(frase))
+
+#26. Crea una función lambda que calcule el resto de l división entre dos números dados
+numero_1 = int(input("introducir numero 1: "))
+numero_2 = int(input("introducir numero 2:"))
+resto = lambda numero_1, numero_2: numero_1%numero_2
+print (resto (numero_1,numero_2))
+
+#27. Crea una función que calcule el promedio de una lista de números
+lista_numeros = [4,4,5,6,7]
+
+def resultado (lista_numeros):
+    suma = 0
+    for numeros in lista_numeros:
+        suma +=numeros
+    return suma/len(lista_numeros)
+
+print (resultado (lista_numeros))
+
+#28. Crea una función que busque y devuelva el primer elemento duplicado en una lista dada
 
 
 
@@ -256,4 +312,34 @@ print(list(numeros))
 
 
 
+#29. Crea una función que convierta una variable en una cadena de texto y enmascare todos los caracteres con el
+#carácter '#', excepto los últimos cuatro.
 
+
+
+
+#30. Crea una función que determine si dos palabras son anagramas, es decir, si están formadas por las mismas letras
+#pero en diferente orden.
+
+
+
+
+
+#31. Crea una función que solicite al usuario ingresar una lista de nombres y luego solicite un nombre para buscar en
+#esa lista. Si el nombre está en la lista, se imprime un mensaje indicando que fue encontrado, de lo contrario, se
+#lanza una excepción.
+
+
+
+
+
+
+
+#32. Crea una función que tome un nombre completo y una lista de empleados, busque el nombre completo en la lista y
+#devuelve el puesto del empleado si está en la lista, de lo contrario, devuelve un mensaje indicando que la persona
+#no trabaja aquí.
+
+
+
+
+#33. Crea una función lambda que sume elementos correspondientes de dos listas dadas.
