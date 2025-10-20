@@ -305,12 +305,15 @@ def resultado (lista_numeros):
 print (resultado (lista_numeros))
 
 #28. Crea una función que busque y devuelva el primer elemento duplicado en una lista dada
-
-
-
-
-
-
+def primer_elemento_repetido(lista):
+    vistos = set()
+    for elemento in lista:
+        if elemento in vistos:
+            return elemento
+        vistos.add(elemento)
+    return None # Devuelve None si no hay elementos repetidos
+mi_lista = ['oso','Oso','Vaca','araña','araña' ]
+print(primer_elemento_repetido(mi_lista))  # Esto imprimirá 2
 
 #29. Crea una función que convierta una variable en una cadena de texto y enmascare todos los caracteres con el
 #carácter '#', excepto los últimos cuatro.
