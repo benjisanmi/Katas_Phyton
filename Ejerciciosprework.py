@@ -331,12 +331,15 @@ print(primer_elemento_repetido(mi_lista))  # Esto imprimirá 2
 #31. Crea una función que solicite al usuario ingresar una lista de nombres y luego solicite un nombre para buscar en
 #esa lista. Si el nombre está en la lista, se imprime un mensaje indicando que fue encontrado, de lo contrario, se
 #lanza una excepción.
+nombres = input ("Introduzca nombres. La primera en mayuscula y separados por espacios: ")
+lista_nombres = nombres.split()
 
+nombre_buscado = input ("Intoduzca el nombre buscado. La primera en mayúscula: ")
 
-
-
-
-
+if nombre_buscado in lista_nombres:
+    print ("Nombre encontrado")
+else:
+    print ("No encontrado")
 
 #32. Crea una función que tome un nombre completo y una lista de empleados, busque el nombre completo en la lista y
 #devuelve el puesto del empleado si está en la lista, de lo contrario, devuelve un mensaje indicando que la persona
@@ -346,3 +349,8 @@ print(primer_elemento_repetido(mi_lista))  # Esto imprimirá 2
 
 
 #33. Crea una función lambda que sume elementos correspondientes de dos listas dadas.
+
+
+
+
+
