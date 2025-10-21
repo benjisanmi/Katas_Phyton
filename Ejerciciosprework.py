@@ -358,20 +358,60 @@ else:
 #32. Crea una función que tome un nombre completo y una lista de empleados, busque el nombre completo en la lista y
 #devuelve el puesto del empleado si está en la lista, de lo contrario, devuelve un mensaje indicando que la persona
 #no trabaja aquí.
+empleado_buscado = input ("Introducir nombre: ")
 
-
-
+empleados = ["Javier San Miguel", 'Juan Gutierrez', 'Arturo Noguero', 'Fernando Iglesias', 'Javier San Juan']
+empleos = {"Javier San Miguel": "Data science", 'Juan Gutierrez': "RRHH", 'Arturo Noguero': "PMO", 'Fernando Iglesias':'Becario', 'Javier San Juan': 'Contable'}
+if empleado_buscado in empleados:
+    print (empleos[empleado_buscado])
+else:
+    print ("No trabaja aquí")
 
 #33. Crea una función lambda que sume elementos correspondientes de dos listas dadas.
-lista_1= input ("Introducir primeros valores (separado por espacios): "))
- 
+lista_1= input ('Introducir primeros valores (separado por espacios): ')
 lista1_integer=lista_1.split()
-mi_lista1=
-lista_2= input ("Introducir segunda lista de valores(separado por espacios): "))
-mi_lista2= lista_2.split()
-#realizar la resta de las listas y representar el resultado
-resultado = list(map(lambda a, b: a - b, mi_lista1,mi_lista2))
-print(resultado)
+mi_lista1= [int(x) for x in lista1_integer]
+lista_2= input ("Introducir segunda lista de valores(separado por espacios): ")
+lista2_integer= lista_2.split()
+mi_lista2 = [int(x) for x in lista2_integer]
+#realizar la suma de las listas y representar el resultado
+resultado = list(map(lambda a, b: a + b, mi_lista1,mi_lista2))
+print (resultado)
+
+#34. Crea la clase Arbol , define un árbol genérico con un tronco y ramas como atributos. Los métodos disponibles son: 
+#crecer_tronco , nueva_rama , crecer_ramas , quitar_rama e info_arbol . El objetivo es implementar estos métodos para
+#manipular la estructura del árbol.
+
+
+
+
+
+
+
+
+
+#35. Crea la clase UsuarioBanco ,representa a un usuario de un banco con su nombre, saldo y si tiene o no cuenta
+#corriente. Proporciona métodos para realizar operaciones como retirar dinero, transferir dinero desde otro usuario y
+#agregar dinero al saldo.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
