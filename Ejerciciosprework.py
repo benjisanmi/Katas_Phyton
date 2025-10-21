@@ -381,7 +381,33 @@ print (resultado)
 #34. Crea la clase Arbol , define un árbol genérico con un tronco y ramas como atributos. Los métodos disponibles son: 
 #crecer_tronco , nueva_rama , crecer_ramas , quitar_rama e info_arbol . El objetivo es implementar estos métodos para
 #manipular la estructura del árbol.
+lass arbol:
+    rama = []
+    tronco = 0
+    def crecer_tronco (tronco):
+        tronco +=1
+    def nueva_rama (rama):
+        rama.append(1)
+    def crecer_rama(rama):
+        for numero in rama:
+            numero +=1
+    def quitar_rama (rama):
+        posicion_rama= int(input("Posición de la rama a eliminar"))
+        rama.pop[posicion_rama]
+    def info_arbol():
+        print ("Número de ramas es: ")
+        print ("Longitud de las ramas es: ")
+        print ("Numero de ramas es: ")
+        
+tarea = input ("¿Que quiere realizar: añadir rama, quitar rama, crecer rama, crecer tronco u info arbol (Por favor, para seleccionar la actividad, ingrese la actividad con el mismo nombre tal cual se le ha dado la opción): ")
+arbolito = arbol ()
 
+if tarea == "añadir rama":
+    
+else:
+    print ("oooo")
+    arboli
+    
 
 
 
