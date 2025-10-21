@@ -312,21 +312,36 @@ def primer_elemento_repetido(lista):
             return elemento
         vistos.add(elemento)
     return None # Devuelve None si no hay elementos repetidos
-mi_lista = ['oso','Oso','Vaca','araña','araña' ]
-print(primer_elemento_repetido(mi_lista))  # Esto imprimirá 2
+lista=input("Introducir los elementos separados por espacios: ")
+mi_lista = lista.split()
+print(primer_elemento_repetido(mi_lista))
 
 #29. Crea una función que convierta una variable en una cadena de texto y enmascare todos los caracteres con el
 #carácter '#', excepto los últimos cuatro.
+contraseña = input ("Introducir contraseña: ")
+cadena = str(contraseña)
+nueva_cadena =""
 
+for letra in cadena [0:-4]:
+    nueva_cadena += "#"
+contraseña_oculta = nueva_cadena+ cadena[-4:]
+print (contraseña_oculta)
 
 
 
 #30. Crea una función que determine si dos palabras son anagramas, es decir, si están formadas por las mismas letras
 #pero en diferente orden.
+palabra_1=input("Introducir palabra: ")
+palabra1 = list(palabra_1)
+palabra_2=input ("Introducir otra palabra: ")
+palabra2 = list(palabra_2)
 
-
-
-
+palabra1_ordenada = sorted(palabra1)
+palabra2_ordenada = sorted(palabra2)
+if palabra1_ordenada == palabra2_ordenada:
+    print ("Son palabras anagramas")
+else:
+    print ("No son palabras anagramas")
 
 #31. Crea una función que solicite al usuario ingresar una lista de nombres y luego solicite un nombre para buscar en
 #esa lista. Si el nombre está en la lista, se imprime un mensaje indicando que fue encontrado, de lo contrario, se
