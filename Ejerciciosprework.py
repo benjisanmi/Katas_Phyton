@@ -3,7 +3,6 @@
 def contar_frecuencias(cadena):
     # Creamos un diccionario vacío donde guardaremos las letras y sus frecuencias
     frecuencias = {}
-
     # Recorremos cada carácter de la cadena que el usuario haya pasado
     for caracter in cadena:
         # Ignoramos los espacios en blanco
@@ -45,7 +44,7 @@ for pais in mi_lista :
         print (pais)
 #4. Genera una función que calcule la diferencia entre los valores de dos listas. Usa la función map()
 #Valor de las listas
-mi_lista1= (1,2,3,4,5)
+mi_lista1= [1,2,3,4,5]
 mi_lista2= mi_lista1 [::-1]
 #realizar la resta de las listas y representar el resultado
 resultado = list(map(lambda a, b: a - b, mi_lista1,mi_lista2))
@@ -364,7 +363,15 @@ else:
 
 
 #33. Crea una función lambda que sume elementos correspondientes de dos listas dadas.
-
+lista_1= input ("Introducir primeros valores (separado por espacios): "))
+ 
+lista1_integer=lista_1.split()
+mi_lista1=
+lista_2= input ("Introducir segunda lista de valores(separado por espacios): "))
+mi_lista2= lista_2.split()
+#realizar la resta de las listas y representar el resultado
+resultado = list(map(lambda a, b: a - b, mi_lista1,mi_lista2))
+print(resultado)
 
 
 
