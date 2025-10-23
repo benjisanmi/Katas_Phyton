@@ -416,7 +416,7 @@ else:
 
 
 
-#35. Crea la clase UsuarioBanco ,representa a un usuario de un banco con su nombre, saldo y si tiene o no cuenta
+#36. Crea la clase UsuarioBanco ,representa a un usuario de un banco con su nombre, saldo y si tiene o no cuenta
 #corriente. Proporciona métodos para realizar operaciones como retirar dinero, transferir dinero desde otro usuario y
 #agregar dinero al saldo.
 
@@ -427,7 +427,56 @@ else:
 
 
 
+#37. Crea una función llamada procesar_texto que procesa un texto según la opción especificada: contar_palabras , 
+#reemplazar_palabras , eliminar_palabra . Estas opciones son otras funciones que tenemos que definir primero y llamar dentro
+#de la función procesar_texto .
 
+
+
+
+
+
+
+
+
+#38. Genera un programa que nos diga si es de noche, de día o tarde según la hora proporcionada por el usuario
+hora = input ("Introducir hora en HH:MM:SS: " )
+tiempo = hora.split (":")
+tiempo_int = [int (x) for x in tiempo]
+if 6<tiempo_int[0]<21:
+    print ("es de día")
+else:
+    print ("es de noche")
+
+
+#39.Escribe un programa que determine qué calificación en texto tiene un alumno en base a su calificación numércos. 
+nota = int(input ("Introducir su nota numérica: "))
+if nota <=69:
+    print ("Insuficiente")
+else:
+    if nota <=79:
+        print ("Bien")
+    else: 
+        if nota<=89:
+            print ("muy bien")
+        else:
+            if nota <=100:
+                print ("excelente")
+            else:
+                print ("No puede haber una calificación mayor de 100")
+    
+#40. . Escribe una función que tome dos parámetros: figura (una cadena que puede ser "rectangulo" , "circulo" o 
+#"triangulo" ) y datos (una tupla con los datos necesarios para calcular el área de la figura).
+
+
+
+
+
+
+
+
+#41. En este ejercicio, se te pedirá que escribas un programa en Python que utilice condicionales para determinar el
+#monto final de una compra en una tienda en línea, después de aplicar un descuento.
 
 
 
