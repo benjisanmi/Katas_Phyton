@@ -468,17 +468,41 @@ else:
 #40. . Escribe una función que tome dos parámetros: figura (una cadena que puede ser "rectangulo" , "circulo" o 
 #"triangulo" ) y datos (una tupla con los datos necesarios para calcular el área de la figura).
 
-
-
-
-
-
-
+figura = input ("Introducir figura para calcular el área: ")
+import math
+def calcular_area (figura):
+    if figura == "rectangulo":
+        base = int (input ("Introducir valor de la base: "))
+        altura = int (input ("Introducir valor de la altura: "))
+        print (base * altura)
+    elif figura == "circulo":
+        base = int (input("Introducir radio del círculo: "))
+        altura = math.pi
+        print (math.pi * (base ** 2))
+    elif figura == "triangulo":
+        base = int (input ("Introducir valor de la base: "))
+        altura = int (input ("Introducir valor de la altura: "))
+        print (0.5 * base * altura)
+    datos = (base,altura)
+    print (datos)
+figura = input ("Introducir figura para calcular el área: ")
+print (calcular_area (figura))
 
 #41. En este ejercicio, se te pedirá que escribas un programa en Python que utilice condicionales para determinar el
 #monto final de una compra en una tienda en línea, después de aplicar un descuento.
 
-
+precio_original = int (input("Introducir precio original: "))
+descuento = input ("¿Tienes decuento? ")
+if descuento =="si":
+    valor_descuento = int(input("Introducir valor del descuento: "))
+    if valor_descuento > 0:
+        precio_final = precio_original - valor_descuento
+        print (f"El valor del producto con el descuento es: {precio_final}, si no hubiese costado {precio_original}")
+    else:
+        print (f"El valor del descuento no es válido, tiene que ser mayor que 0. Por lo tanto el valor es: {precio_original}")
+    
+else: 
+    print (f"Al no tener descuento el precio sigue siendo el mismo. El valor es {precio_original}")
 
 
 
