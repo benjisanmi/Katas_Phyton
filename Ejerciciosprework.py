@@ -381,44 +381,132 @@ print (resultado)
 #34. Crea la clase Arbol , define un árbol genérico con un tronco y ramas como atributos. Los métodos disponibles son: 
 #crecer_tronco , nueva_rama , crecer_ramas , quitar_rama e info_arbol . El objetivo es implementar estos métodos para
 #manipular la estructura del árbol.
-lass arbol:
-    rama = []
-    tronco = 0
-    def crecer_tronco (tronco):
-        tronco +=1
-    def nueva_rama (rama):
-        rama.append(1)
-    def crecer_rama(rama):
-        for numero in rama:
-            numero +=1
-    def quitar_rama (rama):
-        posicion_rama= int(input("Posición de la rama a eliminar"))
-        rama.pop[posicion_rama]
-    def info_arbol():
-        print ("Número de ramas es: ")
-        print ("Longitud de las ramas es: ")
-        print ("Numero de ramas es: ")
-        
-tarea = input ("¿Que quiere realizar: añadir rama, quitar rama, crecer rama, crecer tronco u info arbol (Por favor, para seleccionar la actividad, ingrese la actividad con el mismo nombre tal cual se le ha dado la opción): ")
-arbolito = arbol ()
+class Arbol:
+    def __init__(self):
+        # 1. Inicializar el tronco con longitud 1 y lista vacía de ramas
+        self.tronco = 1
+        self.ramas = []
 
-if tarea == "añadir rama":
-    
-else:
-    print ("oooo")
-    arboli
-    
+    def crecer_tronco(self):
+        # 2. Aumentar longitud del tronco en una unidad
+        self.tronco += 1
 
+    def nueva_rama(self):
+        # 3. Agregar una nueva rama de longitud 1
+        self.ramas.append(1)
 
+    def crecer_ramas(self):
+        # 4. Aumentar en una unidad la longitud de todas las ramas
+        self.ramas = [r + 1 for r in self.ramas]
 
+    def quitar_rama(self, posicion):
+        # 5. Eliminar una rama en una posición específica (índice base 1 para mayor claridad)
+        if 1 <= posicion <= len(self.ramas):
+            self.ramas.pop(posicion - 1)
+        else:
+            print("Posición inválida. No existe esa rama.")
 
+    def info_arbol(self):
+        # 6. Devolver información del árbol
+        info = f"Longitud del tronco: {self.tronco}\n"
+        info += f"Número de ramas: {len(self.ramas)}\n"
+        info += f"Longitudes de ramas: {self.ramas if self.ramas else 'Sin ramas'}"
+        return info
 
+# --- Caso de uso ---
+if __name__ == "__main__":
+    # 1. Crear un árbol
+    arbol = Arbol()
+
+    # 2. Hacer crecer el tronco una unidad
+    arbol.crecer_tronco()
+
+    # 3. Añadir una nueva rama
+    arbol.nueva_rama()
+
+    # 4. Hacer crecer todas las ramas una unidad
+    arbol.crecer_ramas()
+
+    # 5. Añadir dos nuevas ramas
+    arbol.nueva_rama()
+    arbol.nueva_rama()
+
+    # 6. Retirar la rama situada en la posición 2
+    arbol.quitar_rama(2)
+
+    # 7. Obtener información del árbol
+    print(arbol.info_arbol())
 
 
 
 #36. Crea la clase UsuarioBanco ,representa a un usuario de un banco con su nombre, saldo y si tiene o no cuenta
 #corriente. Proporciona métodos para realizar operaciones como retirar dinero, transferir dinero desde otro usuario y
 #agregar dinero al saldo.
+class UsuarioBanco:
+    def __init__(self, nombre, saldo, cuenta_corriente=True):
+        # Inicializar usuario con nombre, saldo y cuenta corriente (True/False)
+        self.nombre = nombre
+        self.saldo = saldo
+        self.cuenta_corriente = cuenta_corriente
+
+    def retirar_dinero(self, cantidad):
+        # Retirar dinero del saldo. Lanza error si no es posible.
+        if cantidad <= 0:
+            raise ValueError("La cantidad a retirar debe ser positiva.")
+        if cantidad > self.saldo:
+            raise ValueError(f"{self.nombre} no tiene suficiente saldo para retirar {cantidad}.")
+        self.saldo -= cantidad
+        print(f"{self.nombre} ha retirado {cantidad}. Saldo actual: {self.saldo}")
+
+    def transferir_dinero(self, otro_usuario, cantidad):
+        # Transferir dinero desde otro usuario al usuario actual
+        if cantidad <= 0:
+            raise ValueError("La cantidad a transferir debe ser positiva.")
+        if not otro_usuario.cuenta_corriente:
+            raise ValueError(f"{otro_usuario.nombre} no tiene cuenta corriente.")
+        if otro_usuario.saldo < cantidad:
+            raise ValueError(f"{otro_usuario.nombre} no tiene suficiente saldo para transferir {cantidad}.")
+        # Realizar transferencia
+        otro_usuario.saldo -= cantidad
+        self.saldo += cantidad
+        print(f"{otro_usuario.nombre} ha transferido {cantidad} a {self.nombre}.")
+        print(f"Saldo de {otro_usuario.nombre}: {otro_usuario.saldo}")
+        print(f"Saldo de {self.nombre}: {self.saldo}")
+
+    def agregar_dinero(self, cantidad):
+        # Agregar dinero al saldo
+        if cantidad <= 0:
+            raise ValueError("La cantidad a agregar debe ser positiva.")
+        self.saldo += cantidad
+        print(f"{self.nombre} ha agregado {cantidad}. Saldo actual: {self.saldo}")
+
+    def __str__(self):
+        # Información legible del usuario
+        tipo_cuenta = "Sí" if self.cuenta_corriente else "No"
+        return f"Usuario: {self.nombre} | Saldo: {self.saldo} | Cuenta corriente: {tipo_cuenta}"
+
+# --- Caso de uso ---
+if __name__ == "__main__":
+    # Crear dos usuarios
+    alicia = UsuarioBanco("Alicia", 100, True)
+    bob = UsuarioBanco("Bob", 50, True)
+
+    print(alicia)
+    print(bob)
+
+    # Agregar 20 unidades de saldo a Bob
+    bob.agregar_dinero(20)
+
+    # Transferir 80 unidades desde Bob a Alicia
+    alicia.transferir_dinero(bob, 80)
+
+    # Retirar 50 unidades del saldo de Alicia
+    alicia.retirar_dinero(50)
+
+    # Estado final
+    print("\nEstado final de los usuarios:")
+    print(alicia)
+    print(bob)
 
 
 
@@ -430,14 +518,72 @@ else:
 #37. Crea una función llamada procesar_texto que procesa un texto según la opción especificada: contar_palabras , 
 #reemplazar_palabras , eliminar_palabra . Estas opciones son otras funciones que tenemos que definir primero y llamar dentro
 #de la función procesar_texto .
+def contar_palabras(texto):
+    palabras = texto.split()
+    conteo = {}
+    for palabra in palabras:
+        palabra_limpia = palabra.strip(".,!?").lower()
+        conteo[palabra_limpia] = conteo.get(palabra_limpia, 0) + 1
+    return conteo
 
 
+def reemplazar_palabras(texto, palabra_original, palabra_nueva):
+    return texto.replace(palabra_original, palabra_nueva)
 
 
+def eliminar_palabra(texto, palabra_a_eliminar):
+    palabras = texto.split()
+    palabras_filtradas = [p for p in palabras if p != palabra_a_eliminar]
+    return " ".join(palabras_filtradas)
 
 
+def procesar_texto(texto, opcion, *args):
+    if opcion == "contar":
+        return contar_palabras(texto)
+    elif opcion == "reemplazar":
+        if len(args) != 2:
+            raise ValueError("Debe proporcionar la palabra original y la nueva para reemplazar.")
+        return reemplazar_palabras(texto, args[0], args[1])
+    elif opcion == "eliminar":
+        if len(args) != 1:
+            raise ValueError("Debe proporcionar la palabra que se desea eliminar.")
+        return eliminar_palabra(texto, args[0])
+    else:
+        raise ValueError("Opción no válida. Use 'contar', 'reemplazar' o 'eliminar'.")
 
 
+# --- Programa principal interactivo ---
+if __name__ == "__main__":
+    texto_usuario = input("Introduce una frase o texto: ")
+
+    print("\n¿Qué operación deseas realizar?(IMPORTANTE: Introducir numero de la operacion que quieres realizar 1,2 o 3)")
+    print("1. Contar palabras")
+    print("2. Reemplazar una palabra")
+    print("3. Eliminar una palabra")
+
+    opcion = input("Selecciona una opción (introducir numero de la opción 1, 2 o 3): ")
+
+    if opcion == "1":
+        resultado = procesar_texto(texto_usuario, "contar")
+        print("\nResultado del conteo de palabras:")
+        for palabra, cantidad in resultado.items():
+            print(f"{palabra}: {cantidad}")
+
+    elif opcion == "2":
+        palabra_original = input("Introduce la palabra que quieres reemplazar: ")
+        palabra_nueva = input("Introduce la nueva palabra: ")
+        resultado = procesar_texto(texto_usuario, "reemplazar", palabra_original, palabra_nueva)
+        print("\nTexto resultante:")
+        print(resultado)
+
+    elif opcion == "3":
+        palabra_a_eliminar = input("Introduce la palabra que deseas eliminar: ")
+        resultado = procesar_texto(texto_usuario, "eliminar", palabra_a_eliminar)
+        print("\nTexto resultante:")
+        print(resultado)
+
+    else:
+        print("Opción no válida. Inténtalo de nuevo.")
 
 #38. Genera un programa que nos diga si es de noche, de día o tarde según la hora proporcionada por el usuario
 hora = input ("Introducir hora en HH:MM:SS: " )
