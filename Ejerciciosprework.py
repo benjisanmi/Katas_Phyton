@@ -37,11 +37,10 @@ print(list(lista_multiplicada))
 
 #3. Escribe una función que tome una lista de palabras y una palabra objetivo como parámetros. La función debe 
 #devolver una lista con todas las palabras de la lista original que contengan la palabra objetivo
+def filtrar_palabras(lista, objetivo):
+    return [palabra for palabra in lista if objetivo in palabra]
 mi_lista = ["Paris","roma","madrid","london"]
-palabra = "i"
-for pais in mi_lista :
-    if palabra in pais:
-        print (pais)
+print(filtrar_palabras(mi_lista, "i"))
 #4. Genera una función que calcule la diferencia entre los valores de dos listas. Usa la función map()
 #Valor de las listas
 mi_lista1= [1,2,3,4,5]
@@ -85,8 +84,8 @@ print(factorial_recursivo(numero))
 
 
 #7. Genera una función que convierta una lista de tuplas a una lista de strings. Usa la función map()
-tuple = (2,3,4,5,6)
-lista = list (map(str, tuple))
+tupla = (2, 3, 4, 5, 6)
+lista = list(map(str, tupla))
 print (lista) 
 
 
@@ -124,22 +123,22 @@ print (animales_permitidos)
 #10.  Escribe una función que reciba una lista de números y calcule su promedio. Si la lista está vacía, lanza una 
 #excepción personalizada y maneja el error adecuadamente.
 
-while True:
-    try: 
-        lista_numeros = input("introduzca valores separados por espacio (solo admite numeros enteros, sin decimales) : ")
-        numeros = lista_numeros.split ()
-        numeros = [int(numero) for numero in numeros]
-        if len(numeros) == 0:
-            print ("no has introducido valores")
-        else: 
-            def promedio (numeros):
-                suma = 0
-                for numero in numeros:
-                    suma += numero
-                return suma/len(numeros)
-            print(promedio(numeros))
-    except ValueError:
-        print ("no has introducido valores enteros")
+class ListaVaciaError(Exception):
+    pass
+
+def promedio(numeros):
+    if len(numeros) == 0:
+        raise ListaVaciaError("La lista está vacía")
+    return sum(numeros) / len(numeros)
+
+try:
+    entrada = input("Introduce números separados por espacios: ")
+    numeros = [int(x) for x in entrada.split()]
+    print(promedio(numeros))
+except ListaVaciaError as e:
+    print(e)
+except ValueError:
+    print("Debes introducir solo números enteros")")
 #11.  Escribe un programa que pida al usuario que introduzca su edad. Si el usuario ingresa un valor no numérico o un 
 #valor fuera del rango esperado (por ejemplo, menor que 0 o mayor que 120, maneja las excepciones 
 #adecuadamente
@@ -179,7 +178,7 @@ print ("Introduce diversas palabras y una letra. Se eliminarán las palabras que
 entrada = input("Introduce palabras separados por espacio y la primera en mayuscula: ")
 palabras = entrada.split()
 letra = input("Introduce una letra en mayuscula: ")
-palabra_correcta = filter(lambda palabra: letra not in palabra, palabras)
+palabra_correcta = filter(lambda palabra: palabra.startswith(letra), palabras)
 print (list (palabra_correcta))
 
 
@@ -347,13 +346,12 @@ else:
 #lanza una excepción.
 nombres = input ("Introduzca nombres. La primera en mayuscula y separados por espacios: ")
 lista_nombres = nombres.split()
-
 nombre_buscado = input ("Intoduzca el nombre buscado. La primera en mayúscula: ")
 
-if nombre_buscado in lista_nombres:
-    print ("Nombre encontrado")
-else:
-    print ("No encontrado")
+def buscar_nombre(lista, nombre):
+    if nombre not in lista:
+        raise ValueError("El nombre no está en la lista")
+    return "Nombre encontrado"
 
 #32. Crea una función que tome un nombre completo y una lista de empleados, busque el nombre completo en la lista y
 #devuelve el puesto del empleado si está en la lista, de lo contrario, devuelve un mensaje indicando que la persona
@@ -589,8 +587,11 @@ if __name__ == "__main__":
 hora = input ("Introducir hora en HH:MM:SS: " )
 tiempo = hora.split (":")
 tiempo_int = [int (x) for x in tiempo]
-if 6<tiempo_int[0]<21:
+if 6<tiempo_int[0]<12:
     print ("es de día")
+
+elif 12<=tiempo_int[0]<20:
+    print ("es por la tarde")
 else:
     print ("es de noche")
 
@@ -616,23 +617,26 @@ else:
 
 figura = input ("Introducir figura para calcular el área: ")
 import math
-def calcular_area (figura):
+def calcular_area(figura, datos):
     if figura == "rectangulo":
-        base = int (input ("Introducir valor de la base: "))
-        altura = int (input ("Introducir valor de la altura: "))
-        print (base * altura)
+        base, altura = datos
+        return base * altura
     elif figura == "circulo":
-        base = int (input("Introducir radio del círculo: "))
-        altura = math.pi
-        print (math.pi * (base ** 2))
+        (radio,) = datos
+        return math.pi * radio**2
     elif figura == "triangulo":
-        base = int (input ("Introducir valor de la base: "))
-        altura = int (input ("Introducir valor de la altura: "))
-        print (0.5 * base * altura)
-    datos = (base,altura)
-    print (datos)
-figura = input ("Introducir figura para calcular el área: ")
-print (calcular_area (figura))
+        base, altura = datos
+        return 0.5 * base * altura
+    else:
+        raise ValueError("Figura no válida")
+# Ejemplo de uso
+figura = input("Introduce la figura: ")
+if figura == "circulo":
+    datos = (int(input("Radio: ")),)
+else:
+    datos = (int(input("Base: ")), int(input("Altura: ")))
+
+print(calcular_area(figura, datos))
 
 #41. En este ejercicio, se te pedirá que escribas un programa en Python que utilice condicionales para determinar el
 #monto final de una compra en una tienda en línea, después de aplicar un descuento.
