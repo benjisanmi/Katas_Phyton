@@ -366,15 +366,17 @@ else:
     print ("No trabaja aquí")
 
 #33. Crea una función lambda que sume elementos correspondientes de dos listas dadas.
-lista_1= input ('Introducir primeros valores (separado por espacios): ')
-lista1_integer=lista_1.split()
-mi_lista1= [int(x) for x in lista1_integer]
-lista_2= input ("Introducir segunda lista de valores(separado por espacios): ")
-lista2_integer= lista_2.split()
-mi_lista2 = [int(x) for x in lista2_integer]
-#realizar la suma de las listas y representar el resultado
-resultado = list(map(lambda a, b: a + b, mi_lista1,mi_lista2))
-print (resultado)
+lista_1 = input('Introducir primeros valores (separado por espacios): ')
+mi_lista1 = [int(x) for x in lista_1.split()]
+lista_2 = input("Introducir segunda lista de valores(separado por espacios): ")
+mi_lista2 = [int(x) for x in lista_2.split()]
+resultado = [a + b for a, b in zip(mi_lista1, mi_lista2)]
+# Añadir elementos restantes
+if len(mi_lista1) > len(mi_lista2):
+    resultado.extend(mi_lista1[len(mi_lista2):])
+else:
+    resultado.extend(mi_lista2[len(mi_lista1):])
+print(resultado)
 
 #34. Crea la clase Arbol , define un árbol genérico con un tronco y ramas como atributos. Los métodos disponibles son: 
 #crecer_tronco , nueva_rama , crecer_ramas , quitar_rama e info_arbol . El objetivo es implementar estos métodos para
